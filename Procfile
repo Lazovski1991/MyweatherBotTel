@@ -1,1 +1,1 @@
-web: java -cp $JAVA_OPTS target/classes/my/company/botweather/BotWeatherApplication
+worker: sh target/bin/workerBot
