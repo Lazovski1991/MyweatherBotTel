@@ -1,6 +1,5 @@
 package my.company.botweather;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.telegram.telegrambots.ApiContextInitializer;
@@ -13,9 +12,5 @@ public class BotWeatherApplication {
 
         SpringApplication.run(BotWeatherApplication.class, args);
 
-
-
-
     }
-
 }
