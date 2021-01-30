@@ -55,7 +55,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>BotWeatherApplication</mainClass>
+                            <mainClass>my.company.botweather.BotWeatherApplication</mainClass>
                             <name>bot-weather</name>
                         </program>
                     </programs>
