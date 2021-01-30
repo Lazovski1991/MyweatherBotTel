@@ -56,7 +56,7 @@
                     <programs>
                         <program>
                             <mainClass>my.company.botweather.BotWeatherApplication</mainClass>
-                            <name>bot-weather</name>
+                            <name>workerBot</name>
                         </program>
                     </programs>
                 </configuration>

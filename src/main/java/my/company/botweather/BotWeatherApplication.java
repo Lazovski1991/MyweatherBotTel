@@ -11,6 +11,5 @@ public class BotWeatherApplication {
         ApiContextInitializer.init();
 
         SpringApplication.run(BotWeatherApplication.class, args);
-
     }
 }
