@@ -26,7 +26,7 @@ public class GetWeather {
     }
 
     public String getWeatherName() {
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city +"&appid=" + appId;
+        String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + appId;
 
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(url, String.class);

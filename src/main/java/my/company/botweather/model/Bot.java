@@ -35,38 +35,37 @@ public class Bot extends TelegramLongPollingBot {
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
     @Value("${dateStart}")
-    private String dateStr;
-    Date parsingDate;
-
-    {
-        try {
-            parsingDate = simpleDateFormat.parse(dateStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
+    private String dateStart;
+    private Date parsingDate;
 
     @Override
     public void onUpdateReceived(Update update) {
-        if (update.getMessage().getText().startsWith("/pogoda")) {
+        if (update.getMessage().getText().startsWith("/start")) {
             try {
-                execute(new SendMessage().setText("Принял").setChatId(update.getMessage().getChatId()));
-                Timer timer = new Timer(true);
-                TimerTask task = new TimerTask() {
-                    @Override
-                    public void run() {
-                        try {
-                            execute(new SendMessage().setChatId(update.getMessage().getChatId()).setText(getWeather.result()));
-                        } catch (TelegramApiException e) {
-                            e.printStackTrace();
-                        } catch (JsonProcessingException e) {
-                            e.printStackTrace();
-                        }
+                parsingDate = simpleDateFormat.parse(dateStart);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Timer timer = new Timer(true);
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    try {
+                        execute(new SendMessage().setChatId(update.getMessage().getChatId()).setText(getWeather.result()));
+                    } catch (TelegramApiException e) {
+                        e.printStackTrace();
+                    } catch (JsonProcessingException e) {
+                        e.printStackTrace();
                     }
-                };
-                timer.scheduleAtFixedRate(task, parsingDate, 1000 * 60 * 60 * 24);
+                }
+            };
+            timer.scheduleAtFixedRate(task, parsingDate, 1000 * 60 * 60 * 24);
+        } else if (update.getMessage().getText().startsWith("/pogoda")) {
+            try {
+                execute(new SendMessage().setChatId(update.getMessage().getChatId()).setText(getWeather.result()));
             } catch (TelegramApiException e) {
+                e.printStackTrace();
+            } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
         }
