@@ -14,7 +14,7 @@
     <name>bot-weather</name>
     <description>Telegram bot weather</description>
     <properties>
-        <java.version>15</java.version>
+        <java.version>1.8</java.version>
         <telegrambot.version>4.9.1</telegrambot.version>
     </properties>
     <dependencies>
@@ -34,6 +34,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
             </plugin>
         </plugins>
     </build>
